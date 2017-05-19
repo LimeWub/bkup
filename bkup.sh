@@ -30,6 +30,9 @@
 #
 # ----------------------------------------------------------------------
 
+# Move to directory where the script is at. 
+# This is added to make it possible to summon the script from a different path and still have the sources etc work properly ( even when relative).
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #Clean up tmp files end of script
 trap "rm -f tmp.*" EXIT
