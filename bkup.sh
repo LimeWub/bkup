@@ -30,6 +30,9 @@
 #
 # ----------------------------------------------------------------------
 
+# Move to directory where the script is at. 
+# This is added to make it possible to summon the script from a different path and still have the sources etc work properly ( even when relative).
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #Clean up tmp files end of script
 trap "rm -f tmp.*" EXIT
@@ -62,7 +65,7 @@ BKUP_HOLDERDIR="PLACEHOLDER_BACKUPHOLDERDIR"
 
 #Set codebase settings
 SOURCE_HOLDERDIR="PLACEHOLDER_SOURCEHOLDERDIR"
-BKUP_PREVDIR=$(find "$BKUP_HOLDERDIR" -type d -maxdepth 1 -print | grep "/BACKUP_" | sort | tail -1)
+BKUP_PREVDIR=$(find "$BKUP_HOLDERDIR" -maxdepth 1 -type d -print | grep "/BACKUP_" | sort | tail -1)
 BKUP_DIR="BACKUP_$(date +%Y%m%d_%A_%s)";
 #Set ignore files/folders matching *list*
 
@@ -70,7 +73,7 @@ BKUP_DIR="BACKUP_$(date +%Y%m%d_%A_%s)";
 DB_HOST="PLACEHOLDER_DBHOSTIP"
 DB_USER="PLACEHOLDER_DBUSER"
 DB_PASS="PLACEHOLDER_DBPASS"
-SQL_PREVDIR=$(find "$BKUP_HOLDERDIR" -type d -maxdepth 1 -print | grep "/SQLBACKUP_" | sort | tail -1)
+SQL_PREVDIR=$(find "$BKUP_HOLDERDIR" -maxdepth 1 -type d -print | grep "/SQLBACKUP_" | sort | tail -1)
 SQL_DIR="SQLBACKUP_$(date +%Y%m%d_%A_%s)";
 
 #How many days of bkups do we want to keep? 10?
