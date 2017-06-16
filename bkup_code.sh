@@ -30,11 +30,27 @@ then
 fi
 
 if [ "$v" == "true" ]; then echo "Sync from '$SOURCE_HOLDERDIR' to '$BKUP_HOLDERDIR/$BKUP_DIR'"; fi
-rsync -auh --delete "$SOURCE_HOLDERDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
+
+
+
+if [ -z "$LOCALHOST_SWITCH" ]
+then
+	expect <<END
+	#if is remote server
+	set timeout -1
+	spawn rsync -auh --delete -e ssh "$SERVER_USER@$SERVER_HOST:$SOURCE_HOLDERDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
+	expect "password:"
+	send "$SERVER_PASS\r"
+	expect eof
+END
+
+else
+	#if this is localhost
+	rsync -auh --delete "$SOURCE_HOLDERDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
+
+fi
+
+
 
 
 if [ "$v" == "true" ]; then echo "----------END CODE BACKUP-------------"; fi
-
-
-
-
