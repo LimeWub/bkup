@@ -45,9 +45,7 @@ then
 fi
 
 
-if [ -z "$DB_HOST" ] ||  [ "${$DB_HOST+xxx}" = "xxx" ] || \
-[ -z "$DB_USER" ] ||  [ "${$DB_USER+xxx}" = "xxx" ] || \
-[ -z "$DB_PASS" ] ||  [ "${$DB_PASS+xxx}" = "xxx" ]
+if [[ ( -z "$DB_HOST"  ||  "$DB_HOSTxxx" = "xxx" )  || ( -z "$DB_USER"  ||   "$DB_USERxxx" = "xxx" ) || ( -z "$DB_PASS"  ||   "$DB_PASSxxx" = "xxx" ) ]]
 then
 	NODB_SWITCH="ON"
 fi
@@ -58,6 +56,3 @@ if [[ ( -z "$SERVER_HOST"  ||  "$SERVER_HOSTxxx" = "xxx" )  || ( -z "$SERVER_USE
 then
 	LOCALHOST_SWITCH="ON"
 fi
-
-
-

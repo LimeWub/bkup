@@ -38,7 +38,7 @@ then
 	expect <<END
 	#if is remote server
 	set timeout -1
-	spawn rsync -auh --delete -e ssh "$SERVER_USER@$SERVER_HOST:$SOURCE_HOLDERDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
+	spawn rsync -auh -e ssh --delete "$SERVER_USER@$SERVER_HOST:$SOURCE_HOLDERDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
 	expect "password:"
 	send "$SERVER_PASS\r"
 	expect eof
