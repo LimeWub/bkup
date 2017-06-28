@@ -36,7 +36,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")"
 #Myrto: make it log the echoes to tmp.
 OUTPUT_TMP=$(mktemp -q tmp.XXXXXX)
 chmod 0600 "$OUTPUT_TMP"
-#exec &> "$OUTPUT_TMP"
+exec &> "$OUTPUT_TMP"
 
 
 #Emailer
