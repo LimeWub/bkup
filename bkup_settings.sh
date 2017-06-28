@@ -23,7 +23,7 @@
 #**# SERVER_HOST = "PLACEHOLDER_SERVERHOST"
 #**# SERVER_USER = "PLACEHOLDER_SERVERUSER"
 #**# SERVER_PASS = "PLACEHOLDER_SERVERPASS"
-#*REQUIRED*# SOURCE_HOLDERDIR="PLACEHOLDER_SOURCEHOLDERDIR"
+#**# SOURCE_HOLDERDIR="PLACEHOLDER_SOURCEHOLDERDIR"
 BKUP_PREVDIR=$(find "$BKUP_HOLDERDIR" -maxdepth 1 -type d -print | grep "/BACKUP_" | sort | tail -1)
 BKUP_DIR="BACKUP_$(date +%Y%m%d_%A_%s)";
 
@@ -39,9 +39,14 @@ SQL_DIR="SQLBACKUP_$(date +%Y%m%d_%A_%s)";
 #How many days of bkups do we want to keep? 10?
 BKUP_DAYSTOKEEP=10
 
-if [ ! -d "$BKUP_HOLDERDIR" ] || [ -z "$SOURCE_HOLDERDIR" ] 
+if [ ! -d "$BKUP_HOLDERDIR" ] 
 then
-	error "[Settings] BACKUP OR SOURCE DIRECTORIES NOT SPECIFIED!"
+	error "[Settings] BACKUP DIRECTORY NOT SPECIFIED!"
+fi
+
+if [[ ( -z "$SOURCE_HOLDERDIR"  ||  "$SOURCE_HOLDERDIRxxx" = "xxx" ) ]]
+then
+	NOCODE_SWITCH = "ON"
 fi
 
 

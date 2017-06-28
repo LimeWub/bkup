@@ -23,7 +23,7 @@ then
 		do ln "$file" "$BKUP_HOLDERDIR/$SQL_DIR${file/$SQL_PREVDIR/}";
 	done
 	# < GRUMP! > If using a decent OS that's not limited af (aka not a OSX) the below will probably also work</ GRUMP!  > 
-	# cp -al "$BKUP_PREVDIR" "$BKUP_HOLDERDIR/$BKUP_DIR"
+	# cp -al "$BKUP_PREVDIR" "$BKUP_HOLDERDIR/$SQL_DIR"
 
 T_SAVEDIR="$SAVEDIR" #Keep correct SAVEDIR stored under different named var. (for Rsync)
 SAVEDIR="$BKUP_HOLDERDIR/TEMP/$SQL_DIR/" #Change SAVEDIR to TEMP one.

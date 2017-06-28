@@ -126,9 +126,11 @@ do
 done
 
 
-
-#Backup files
-source ./bkup_code.sh
+if [ -z "$NOCODE_SWITCH" ]
+then
+	#Backup files
+	source ./bkup_code.sh
+fi
 
 if [ -z "$NODB_SWITCH" ]
 then
